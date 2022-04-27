@@ -91,3 +91,52 @@ It lets you take decisions in the code based on the comparing values, in JS ther
 In case of the objects, it does a comparison of the reference no by the content of the object(structure equality).
 
 -	Coercive Comparisons: the operator == does comparison of value and type, but in case the types are different, it first does a coercion and then it does the comparison
+
+### Classes
+
+> ”Classes are a definition of a type of custom data structure that includes data and behaviors”
+and to have concrete values of a class you need to insatiate it, i.e.
+
+```
+Class  Page {
+  Constructor(text) {
+    this.text = text;
+  }
+  print() {
+    console.log(this.text);
+  }
+}
+
+var newPage = new Page(“test sample”);
+newPage.print();
+```
+
+### Class Inheritance
+
+It lets you share common behavior among classes i.e.
+
+```
+Class Publication {
+  Constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
+  print() {
+    console.log(`
+    Title: ${this.title}
+      By: ${}
+    `)
+  }
+}
+
+Class Book extends Publication {
+	constructor(title, author, ISBN) {
+		super(title, author);
+		this.ISBN = this.ISBN;
+	}
+	print() {
+		super.print();
+		console.log(`ISBN: ${ISBN}`);
+  }
+}
+```
