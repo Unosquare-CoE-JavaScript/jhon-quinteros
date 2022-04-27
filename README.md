@@ -82,3 +82,12 @@ Var test = function() {
 ```
 
 >  Note: in Javascript a function is a first class citizenship, it means that can be threated  as other types in Javascript, you can assign it to a variable or pass it as a parameter in other function.
+
+### Comparisons
+
+It lets you take decisions in the code based on the comparing values, in JS there are many ways to do it.
+
+-	Strict Comparison: the operator for this is the `===` which compares the values and doesn’t let do coercion but there are two exception that fail with this operator, the `NaN ` and the `-0` for the `NaN ` you can use Number.isNaN() and for `-0` you can use Object.is().
+In case of the objects, it does a comparison of the reference no by the content of the object(structure equality).
+
+-	Coercive Comparisons: the operator == does comparison of value and type, but in case the types are different, it first does a coercion and then it does the comparison
