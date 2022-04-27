@@ -140,3 +140,35 @@ Class Book extends Publication {
   }
 }
 ```
+
+The `super` keyword is used to access the parent constructor and also to call it’s methods. The option of overriding the parent’s methods is called polymorphism.
+
+### Modules
+
+Modules are other way to organize the code, it helps you to group the code and import other modules to interact with.
+Javascript defined the standard in the ES6 but there are also other implementation of modules: 
+-	Asynchronous Module Definition(AMD)
+-	Universal Modules Definition(UMD)
+-	CommonJS
+
+#### ES Module
+
+It is the standard definition and these modules are always file based, one file one module. You need to use the keyword `export` in your module with the code that you want make available and `import` to get it. Note that those modules are singleton it is only instantiate the first time it is called.
+
+Example:
+
+````
+export function printDetails(title, author) {
+	console.log(`
+		Title: ${title}
+By: ${author}
+`);
+}
+````
+Then you can import this function in another module:
+
+````
+Import { printDetails } from “./file.js”;
+printDetails(“title print”, ”Me”);
+
+```
