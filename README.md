@@ -204,3 +204,32 @@ howdy(”Grant”);
 ```
 In the above example we can see how the `greeting` function return another inner function `who`, but `who` can still access to the parameter sent to `greeting`.
 What happens under hood is that the `msg` parameter is not deleted from the memory, it lets to have still access from the inner function even you can update that value.
+
+### this Keyword
+
+The keyword `this` is not static and is not based on the function definition, it can be changed based on how the function is called. It is defined by the “execution context”(we could this as an object whose properties are available to the function).
+
+Example:
+
+```
+function study() {
+	console.log(`Studying ${this.subject}`);
+}
+
+let math = {
+  subject: “Math”,
+  study: study
+}
+
+let biology = {
+  subject: “Biology”,
+  study: study
+}
+
+math.study();
+biology.study();
+```
+
+### Prototypes
+
+It helps to solve property access in objects, letting an object A access to methods of an object B creating a prototype chain. In Javascript the inheritance is made by prototypes.
