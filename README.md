@@ -46,3 +46,19 @@ It is a tool that let convert code thar is not in Javascript and run it over the
 ### Strict mode
 
 Javascript added the Strict mode `“use strict”;` in the ES5 version, this adds new  set of rules to the code you write below it, i.e: the value of `this` in the strict mode is `undefined`. Most of the projects by default uses strict mode either by the transpilers that add it or if you use the ES6 modules that also add it.
+
+
+## Chapter 2: Surveying JS
+
+### Each File is a Program
+
+In Javascript each file is considered a program and they can interact among them by the global context. In the ES6 was added the module, there you can export the state and methods or import other ones.
+
+### Values
+
+Javascript has two categories of values, the primitives (numbers, string, Boolean, null, undefined and symbol) and objects.
+An object is and unordered keyed collection of values, but Javascript also has arrays that are numerically ordered list of data. 
+
+### Declaring Variable
+
+A value can be literal (declared inline in the code) or held in a variable. You can use three keywords to declare a variable: the `var` it lets you declare and reassign its value it use a function scope, `let` is almost the same as `var` but it has a block scope, `const` it is block scope and it doesn’t let you reassign its value.
