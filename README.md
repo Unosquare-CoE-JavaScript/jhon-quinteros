@@ -247,4 +247,4 @@ let animal = {
 let dog = Object.create(animal);
 ```
 
-(img/object.create.PNG)
+![Prototype assignment](img/object.create.PNG)
