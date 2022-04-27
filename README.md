@@ -62,3 +62,23 @@ An object is and unordered keyed collection of values, but Javascript also has a
 ### Declaring Variable
 
 A value can be literal (declared inline in the code) or held in a variable. You can use three keywords to declare a variable: the `var` it lets you declare and reassign its value it use a function scope, `let` is almost the same as `var` but it has a block scope, `const` it is block scope and it doesn’t let you reassign its value.
+
+### Function
+
+It is a group of statement that can be called several times, there are two was to define a function:
+
+-	Declaring a function: the name is associated to the function at compilation time.
+
+```
+function test() {
+}
+```
+
+-	Function expression: the function is assigned to the variable at runtime.
+
+```
+Var test = function() {
+}
+```
+
+>  Note: in Javascript a function is a first class citizenship, it means that can be threated  as other types in Javascript, you can assign it to a variable or pass it as a parameter in other function.
