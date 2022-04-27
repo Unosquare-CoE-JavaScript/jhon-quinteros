@@ -157,17 +157,17 @@ It is the standard definition and these modules are always file based, one file 
 
 Example:
 
-````
+```
 export function printDetails(title, author) {
 	console.log(`
 		Title: ${title}
     By: ${author}
   `);
 }
-````
+```
 Then you can import this function in another module:
 
-````
+```
 Import { printDetails } from “./file.js”;
 
 printDetails(“title print”, ”Me”);
@@ -181,3 +181,26 @@ JavaScript also give methods for consuming iterators one of the is the `for of `
 ### Iterables
 
 > Iterable is a value that can be iterated over. ES6 defined some structures as iterable: arrays, strings, maps, sets, etc. that are consumed by iterators.
+
+## Chapter 3: Digging to the Roots of JS
+
+### Closure
+
+> Closure is when a function remembers and continues to access variables from outside its scope, even when the function is executed in a different scope.
+Example:
+
+```
+function greeting(msg) {
+	Return function who(name) {
+		Console.log(`${msg}, ${who}`);
+  }
+}
+
+var hello = greeting(“hello”);
+var howdy = greeting(“howdy”);
+
+hello(“Kyle”);
+howdy(”Grant”);
+```
+In the above example we can see how the `greeting` function return another inner function `who`, but `who` can still access to the parameter sent to `greeting`.
+What happens under hood is that the `msg` parameter is not deleted from the memory, it lets to have still access from the inner function even you can update that value.
