@@ -172,3 +172,12 @@ Import { printDetails } from “./file.js”;
 
 printDetails(“title print”, ”Me”);
 ```
+
+### Iteration
+
+When you have big amounts of data instead of handle it at once you would prefer iterate with small chunks of the data until you process the whole, that is why Javascript standardized the protocol for iterator where you need to define the next() method.
+JavaScript also give methods for consuming iterators one of the is the `for of ` another way is using the spread operator`(…)` both options help you to get the information from an iterator.
+
+### Iterables
+
+> Iterable is a value that can be iterated over. ES6 defined some structures as iterable: arrays, strings, maps, sets, etc. that are consumed by iterators.
