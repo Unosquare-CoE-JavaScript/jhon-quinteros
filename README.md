@@ -42,3 +42,7 @@ We can consider Javascript as a compiled language because it does several steps 
 ### Web Assembly
 
 It is a tool that let convert code thar is not in Javascript and run it over the JS VM. It does the compilation of the code ahead of time (AOT) so it can run in the JS VM, the main idea was to do performance improvement and bring no JS developers to the web, but there are new opportunities with this tool trying make it cross-platform.
+
+### Strict mode
+
+Javascript added the Strict mode `“use strict”;` in the ES5 version, this adds new  set of rules to the code you write below it, i.e: the value of `this` in the strict mode is `undefined`. Most of the projects by default uses strict mode either by the transpilers that add it or if you use the ES6 modules that also add it.
