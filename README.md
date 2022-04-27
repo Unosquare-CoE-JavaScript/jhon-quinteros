@@ -98,7 +98,7 @@ In case of the objects, it does a comparison of the reference no by the content 
 and to have concrete values of a class you need to insatiate it, i.e.
 
 ```
-Class  Page {
+Class Page {
   Constructor(text) {
     this.text = text;
   }
@@ -123,7 +123,7 @@ Class Publication {
   }
   print() {
     console.log(`
-    Title: ${this.title}
+      Title: ${this.title}
       By: ${}
     `)
   }
@@ -161,14 +161,14 @@ Example:
 export function printDetails(title, author) {
 	console.log(`
 		Title: ${title}
-By: ${author}
-`);
+    By: ${author}
+  `);
 }
 ````
 Then you can import this function in another module:
 
 ````
 Import { printDetails } from “./file.js”;
-printDetails(“title print”, ”Me”);
 
+printDetails(“title print”, ”Me”);
 ```
