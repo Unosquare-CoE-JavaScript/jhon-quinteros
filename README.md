@@ -233,3 +233,18 @@ biology.study();
 ### Prototypes
 
 It helps to solve property access in objects, letting an object A access to methods of an object B creating a prototype chain. In Javascript the inheritance is made by prototypes.
+
+### Object Linkage
+
+You can assign the prototype of an object with the method `Object.create()`, this method create a new object with it’s prototype linked to the parameter sent.
+
+```
+let animal = {
+    eat: function(){
+        console.log("eating");
+    }
+}
+let dog = Object.create(animal);
+```
+
+(img/object.create.PNG)
