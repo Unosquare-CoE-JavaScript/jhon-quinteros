@@ -277,8 +277,30 @@ Scoped defines the accessibility of variables, all the variables defined in the 
 
 ### Pillar 2: Prototypes
 
-The prototype has been used mainly in inheritance, but it isn’t a rule you can connect two objects to cooperate dynamically. This is called “behavior delegation”
+The prototype has been used mainly in inheritance, but it isn’t a rule you can connect two objects to cooperate dynamically. This is called “behavior delegation”.
 
 ### Pillar 3: Types and Coercion
 
-In Javascript to avoid confusion  in type we use tools like typescript to work around it
+In Javascript to avoid confusion  in type we use tools like typescript to work around it.
+
+## Appendix
+
+### Function forms
+
+#### Anonymous function
+
+Anonymous function are function that doesn’t have a name identifier between `function` and the parameter list `(…)`. Here Javascript does a “name inference”.
+
+Example:
+
+```
+var sayHi = function() {
+	console.log("Hello World");
+}
+console.log(sayHi.name);
+//sayHi
+```
+
+The `name` property of the function return the name defined or inferred of the function.
+
+Note: it won’t work if the anonymous function is sent as an argument to another function, the `name` property will return an empty string.
