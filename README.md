@@ -248,3 +248,24 @@ let dog = Object.create(animal);
 ```
 
 ![Prototype assignment](img/object.create.PNG)
+
+### this and Prototype-delegation
+
+Prototype delegation is the way Javascript look for a method that was invoked by an object, if the object doesn’t have the method, it will look in the prototype chain until it finds it.
+And it is related with the dynamic `this`, because it let you have the right `this` used when the method is called.
+
+Exmple:
+
+```
+var car = {
+	brand: “car”,
+	turnOn() {
+    console.log(`Turning on the ${this.brand}`);
+  }
+}
+var mercedes = Object.create(car);
+mercedes.brand = “Mercedes”
+mercedes.turnOn();
+// Turning on the Mercedes
+```
+
