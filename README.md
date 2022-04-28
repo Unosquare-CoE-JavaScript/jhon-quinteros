@@ -269,3 +269,16 @@ mercedes.turnOn();
 // Turning on the Mercedes
 ```
 
+## Chapter 4: The Bigger Picture
+
+### Pillar 1: Scope and Closure
+
+Scoped defines the accessibility of variables, all the variables defined in the current and outer scopes are available, but the variables defined in inner scopes aren’t. Javascript has some tricks on it, first “hoisting” when all the variables declared anywhere are treated as if they were declared at the beginning of the scope, the second is `var` that are only function scoped.
+
+### Pillar 2: Prototypes
+
+The prototype has been used mainly in inheritance, but it isn’t a rule you can connect two objects to cooperate dynamically. This is called “behavior delegation”
+
+### Pillar 3: Types and Coercion
+
+In Javascript to avoid confusion  in type we use tools like typescript to work around it
