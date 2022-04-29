@@ -417,3 +417,7 @@ with (pet) {
 Lexical Scope is defined at compilation time, and it is associated with the stage of lexing(compilation). The lexical scope is controlled by the placement of functions, block and variable declarations.
 When you declare a variable inside a function the compiler associates the variable to the function scope, (let and const can also be associated to block scope).
 When a variable is used in the scope, the compile will search for the declaration, if it is not in the current scope, it will look in the outer scopes until it finds it or reach the global scope, and if it isn’t founded it will throw an error.
+
+## Chapter 2: Illustrating Lexical Scope
+
+The variables are associated to the scope where they are declared, and these scopes are determined in compilation time. The scopes can be nested but it is the whole, there can’t be partial nested. A reference to a variable can be done if it is declared in the current or outer scope.
