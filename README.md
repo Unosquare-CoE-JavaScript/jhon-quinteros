@@ -304,3 +304,16 @@ console.log(sayHi.name);
 The `name` property of the function return the name defined or inferred of the function.
 
 Note: it won’t work if the anonymous function is sent as an argument to another function, the `name` property will return an empty string.
+
+
+# You don’t know JS yet SCOPE & ClOSURES
+
+## Chapter 1: What’s the Scope?
+
+The scope is a set of rules that is applied in the code to define where are placed the variables, function and blocks.
+A function can be assigned or passed around as a variable, but the variables that are access and hold doesn’t change, doesn’t matter where the function is executed. This feature is called closure.
+
+### Compiled vs Interpreted
+
+-	The compiled code follows a set of steps that convert the code into binary that computer can read. This process is only done once.
+-	The interpreted code goes line by line converting the code line into the binary and is processed.
