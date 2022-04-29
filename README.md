@@ -421,3 +421,12 @@ When a variable is used in the scope, the compile will search for the declaratio
 ## Chapter 2: Illustrating Lexical Scope
 
 The variables are associated to the scope where they are declared, and these scopes are determined in compilation time. The scopes can be nested but it is the whole, there can’t be partial nested. A reference to a variable can be done if it is declared in the current or outer scope.
+
+### Process of the code
+
+To process the code there are three actors involved:
+-	Engine: it compiles and execute the code.
+-	Compiler: parse and generate the code.
+-	Scope Manager: collect and maintain the variables identifier and the accessibility of them.
+When a variable is declared and initialized the compiler will generate the tokens (lexing stage) and then parse into the AST, then will ask to the scope manager to create the new variable.
+In the execution stage of the program, the engine work with the scope manager to assign the values to the variables declared and instantiate the functions scopes.
