@@ -458,3 +458,26 @@ getStudentName();
 console.log(studentName);
 //Pepe
 ```
+
+## Chapter 3: The Scope Chain
+
+The connections between nested scopes is called “scope chain”, this determine the accessibility of a variable, this chain moves upward only.
+The lookout for the variable is made at compilation time, so it improves the performance at runtime, but there is an exception and is when it can’t find the variable in the file it will look for the global scope in other files at runtime.
+
+### Shadowing
+
+You can’t repeat a name of a variable in a scope, but you can have the same variable name in nested scopes.
+
+```
+var name = “Pepe”;
+function printName(name) {
+  name = name.toUpperCase();
+	console.log(name);
+}
+
+printName(name);
+console.log(name);
+//PEPE
+//Pepe
+```
+When the variable is lookup and is found in the context it doesn’t take in account of the outer variables with the name, as shown in the example above. This feature is called “shadowing”. Something to be aware is that this shadowing affects to all the inner scopes, that now won’t be able to access the outer definition of the variable.
