@@ -317,3 +317,54 @@ A function can be assigned or passed around as a variable, but the variables tha
 
 -	The compiled code follows a set of steps that convert the code into binary that computer can read. This process is only done once.
 -	The interpreted code goes line by line converting the code line into the binary and is processed.
+
+### Compiling Code
+
+The definition of the scope is done in the step of “compilation”, that is why is important to understand it.
+The compilation is composed of three stage:
+
+-	Tokenizing/Lexing: This consist in split eh code into chunks called tokens, and Lexing is about determine if a token is distinct or part of another one.
+-	Parsing: take an array of tokens and convert it into a tree of nested elements called Abstract Syntax Tree (AST).
+-	Code Generation: it converts the AST into executable code.
+
+The JS engine does this process JIT.
+
+### The JS engine
+
+There are two steps that the JS engine does, the parsing and compilation. You can see three characteristics to prove this:
+
+-	Syntax errors: in the following snippet, the code doesn’t run instead it throws an error, showing how the code is not executed line by line.
+
+```
+Var greeting = “hello”;
+console.log(greeting);
+greeting = .”Hi”;
+//SyntaxError
+```
+
+-	Early Errors: in the next snippet, you can see how an early error is thrown because in strict mode is not allowed have duplicated parameters, and the code doesn’t run.
+
+```
+saySomething(“Hello”, “Hi”);
+//Syntax error
+
+function saySomething(greeting, greeting) {
+  "use strict";
+  console.log(greeting);
+}
+```
+
+-	Hoisting: in the example below you can see how the function fails because the `greeting` variable is being redeclared in the following line and it throws an error, and it only can happens if the scopes where already defined.
+
+```
+function saySomething() {
+  var greeting = “Hello”;
+  {
+    Greeting = “Howdy”;
+    let greeting = “Hi”;
+    console.log(greeting);
+  }
+}
+saySomething();
+//ReferenceError
+```
