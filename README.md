@@ -389,3 +389,31 @@ There are several ways to declare sources variables
 -	In conditionals `if (student.id == studenID)` in this case both variables are sources.
 -	In calling functions `getStudentName(20)`.
 
+### Scope and Runtime modifications
+
+When the option `”use strict”;` is no used there are two keyword that can be used to modify the scope at runtime, but you shouldn’t.
+-	`eval` this method lets you pass code in format of string and if it has function o variable declaration them are going to be added at runtime adding new scopes or adding new variables in the current scope.
+
+```
+function sayHello() {
+	eval(“var hello = ‘hello’;”);
+  console.log(hello);
+}
+sayHello();
+//hello
+```
+
+-	The `with` this keyword lets you assign an object as if it were the scope of the block.
+
+```
+var pet = {age: 5, weight: 10}
+with (pet) {
+  console.log(`my pet has ${age} years and weight ${weight}`);
+}
+```
+
+### Lexical Scope
+
+Lexical Scope is defined at compilation time, and it is associated with the stage of lexing(compilation). The lexical scope is controlled by the placement of functions, block and variable declarations.
+When you declare a variable inside a function the compiler associates the variable to the function scope, (let and const can also be associated to block scope).
+When a variable is used in the scope, the compile will search for the declaration, if it is not in the current scope, it will look in the outer scopes until it finds it or reach the global scope, and if it isn’t founded it will throw an error.
