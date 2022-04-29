@@ -430,3 +430,31 @@ To process the code there are three actors involved:
 -	Scope Manager: collect and maintain the variables identifier and the accessibility of them.
 When a variable is declared and initialized the compiler will generate the tokens (lexing stage) and then parse into the AST, then will ask to the scope manager to create the new variable.
 In the execution stage of the program, the engine work with the scope manager to assign the values to the variables declared and instantiate the functions scopes.
+
+### Nested Scope
+
+Every function or block creates its own scope and Scope manager, you can nest them as you want. The Scope Manager has a registry of the variable identifiers, when the identifier is from a function it initializes the function too, if it is a `var` identifier it is initialized as undefined, in the case of `let/const` are uninitialized.
+
+### Lookup Failures
+
+When the scope manager can’t found an identifier in its or outer scopes, an error is thrown. The error will change based on if the code is `strict mode` and if the variable was a target or source.
+If the variable is source, a `ReferenceError` is thrown as the identifier is considered undeclared
+If the variable is `target` and the code uses `strict mode` a `ReferenceError` is thrown.
+
+### Undefined
+
+There is a muddle between the terms `undefined` and the error `Not declared ReferenceError`, the first means that the variable exists but it doesn’t have a value, and the second means that the variable wasn’t declared.
+
+### Global Variable
+
+If you don’t use the `strict mode` and assign a value to a non-declared variable, the Scope Manager will create and global variable.
+
+```
+function getStudentName() {
+  studentName = “Pepe”;
+}
+
+getStudentName();
+console.log(studentName);
+//Pepe
+```
