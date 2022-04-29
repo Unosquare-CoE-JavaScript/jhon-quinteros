@@ -368,3 +368,24 @@ function saySomething() {
 saySomething();
 //ReferenceError
 ```
+
+### Declaration of Variables
+
+The declaration of variables can be used for target of assignment or source of a value.
+The variable is a target if it is not being assigned in the statement, otherwise it is a source.
+
+### Targets
+
+There are different way that you can make a variable a target.
+-	Assignment of a value `var a = “Hello”`
+-	Assignment in loops `for (let student of students) `
+-	Passing parameters in functions `getStudentName(50)`
+-	Function declaration `function getStudentName(studenID) {}`, here an identifier `getStudentName` is declared(function hoisting)
+
+### Sources
+
+There are several ways to declare sources variables
+-	In loops `for (let student of students)`, here the `students` variables is a source.
+-	In conditionals `if (student.id == studenID)` in this case both variables are sources.
+-	In calling functions `getStudentName(20)`.
+
