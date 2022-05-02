@@ -481,3 +481,39 @@ console.log(name);
 //Pepe
 ```
 When the variable is lookup and is found in the context it doesn’t take in account of the outer variables with the name, as shown in the example above. This feature is called “shadowing”. Something to be aware is that this shadowing affects to all the inner scopes, that now won’t be able to access the outer definition of the variable.
+
+### Illegal Shadowing
+
+Trying to shadow a `let` with a `var` is invalid if the var is inside a block, it only will work if the var is inside of an inner function,
+
+```
+//Valid case:
+function shadowing() {
+  let special = "Javascript";
+	function test() {
+		var special = "Java";
+	}
+}
+
+//Invalid case:
+function shadowing() {
+  let special = "Javascript";
+	{
+		var special = "Java";
+	}
+}
+```
+
+### function declaration vs function expression
+
+There are couple of differences between using function declaration or expression.
+The function declaration is hoisted, but the expression not, only the name of the var is hoisted.
+
+```
+// function declaration
+function helloWorld() {}
+
+// anonymous function expression
+var helloWorld = function(){}
+```
+
