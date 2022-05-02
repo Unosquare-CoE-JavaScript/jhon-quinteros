@@ -670,4 +670,16 @@ There are cases where the curly braces`{}` doesn’t mean scope:
 
 You can use the block scope to hide the variables so it is only accessible when it is needed.
 
+### var and let
 
+Based on the suggestion of the book, you should prefer use `let` if the variable scope fits in a block, and if the variable is used in the whole function, it should be `var`. Also, you should prefer use `let` in the `for` loop. This is only the opinion of the author of the book.
+
+### The catch block
+
+The catch keyword uses the “block-scoping declaration capability”, it creates a block scope when you declare the “error” parameter or if you declare another block scope variable.
+
+### Function Declaration in Blocks
+
+This feature is when you declare a function inside a block, based on the JS standard the function should be only accessible inside the block that declares it but, in the browsers environment there is a difference, here the function name is hoisted to the function scope and initialized as undefined. This is because the definition came after the browser already implemented it, so decided to keep it.
+
+![Function in Block](img/functionInBlock.PNG)
