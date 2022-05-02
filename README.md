@@ -551,3 +551,32 @@ When an element has the `id` attribute, it will create a global variable that re
 ```
 
 ![DOM variables](img/dom.PNG)
+
+### Web Workers
+
+Web workers allow run js in separate thread, but add restrictions in the communication with the main thread, also doesn’t have access to the DOM and doesn’t share the global scope with the main js program.
+In the web worker the reference to the global object is done with `self`.
+
+### ES modules
+
+When you declare variables and function in a module, those variables aren’t global variables and won’t be created as properties in the global object, instead they are created in a module object.
+```
+var student = ”Pepe”;
+function hello() {
+	console.log(`Hello ${student}`);
+}
+export hello
+```
+
+### Node
+
+Node at difference to the browser threats all the js files even the main as modules, so you are not working in the global scope. Doesn’t matter if you are using the ES6 module or commonJS.
+The only way to add global properties is to add them in the reference provided by node “global”.
+
+```
+global.studentName = “pepe”;
+
+function hello() {
+	console.log(`Hello ${studentName}`);
+}
+```
