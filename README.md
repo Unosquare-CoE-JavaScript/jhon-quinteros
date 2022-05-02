@@ -602,3 +602,8 @@ This feature of re-declaration only works with the keyword `var`, the `let` keyw
 ### Const
 
 The keyword `const` also doesn’t let the re-declaration but also doesn’t let you declare it without initializing it.
+
+### Loops
+
+Something to be aware of the loops is that every time the loop does an iteration, it creates its own scope instance. It means that the variables are declared in each instance.
+Point out that the `const` can’t be used in the `for` loop because it will try to reassign its value and that’s is no allowed in `const`. 
