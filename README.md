@@ -520,3 +520,34 @@ var helloWorld = function(){}
 ### Arrow functions
 
 Arrow function is a new way of function expression and it is anonymous, it has the same rules for lexical scope, the variable declaration has the same behavior.
+
+## Chapter 4: Around the Global Scope
+
+It lets you interact between different JS files, but also it also has:
+-	The primitives: undefined, null, Infinity, NaN
+-	Natives: Date(), Object, String()
+-	Functions: eval, parseInt
+-	Namespaces: Math, Atomics, JSON
+In the web also is exposed:
+-	Console
+-	DOM(window, document)
+-	Timers(setTimeout)
+-	Web APIs: navigator, history, geolocation
+
+### Where is the Global Scope
+
+Each environment handles the global scope in different way.
+-	Browser: every variable created in the global scope will be also a property in the window object. Note that if you use `let` in the global scope it won’t create a property in the global window.
+
+### DOM Global
+
+When an element has the `id` attribute, it will create a global variable that references it.
+```
+<body>
+  <ul id="my-todo-list">
+    <li id="first">Write a book</li>
+  </ul>
+</body>
+```
+
+![DOM variables](img/dom.PNG)
