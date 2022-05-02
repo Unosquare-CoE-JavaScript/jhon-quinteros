@@ -658,3 +658,16 @@ var result = (
   }
 )()
 ```
+### Scoping with Blocks
+
+A block `{}` only becomes in scope if there are block-scope declarations(let, const).
+There are cases where the curly braces`{}` doesn’t mean scope:
+
+-	In object literals declarations
+-	In Class definitions
+-	Functions definitions
+-	The switch statements
+
+You can use the block scope to hide the variables so it is only accessible when it is needed.
+
+
