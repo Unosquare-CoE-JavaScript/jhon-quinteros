@@ -517,3 +517,6 @@ function helloWorld() {}
 var helloWorld = function(){}
 ```
 
+### Arrow functions
+
+Arrow function is a new way of function expression and it is anonymous, it has the same rules for lexical scope, the variable declaration has the same behavior.
