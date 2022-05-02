@@ -620,3 +620,41 @@ Var studentName = "Pepe";
   let studentName = "Suzy";
 }
 ```
+
+## Chapter 6: Limiting Scope Exposure
+
+In software engineering there is a discipline called “The Principle of Least Privilege” and it has a variation called “Least Exposure”, this is meanly for security and is states that you should try to design the components with least access and exposure. This helps because if a piece fails it won’t have a great impact in the rest of components.
+So, accessing to variables from different scopes have three main drawbacks:
+-	Naming collisions
+-	Unexpected Behaviors: because letting other use the functions in ways it wasn’t developed can cause bugs.
+-	Unintended Dependency
+
+### Hiding in Plain (Function) Scope
+
+You can wrap the variable and functions in an outer function an only return the functions that you want, that way the state of the variables remains but are hidden.
+Example: if you want to have an array with numbers and a function that returns the greatest value you can wrap both in an outer function.
+
+```
+function getGreatestNumber() {
+  var numbers = [7,5,1];
+  return function getGreatest() {
+		return numbers[0];
+  }
+}
+var getGreatest = getGreatestNumber();
+console.log(getGreatest());
+```
+
+This way `getGreatestNumber` function creates an scope cache that holds the `numbers` array.
+
+### Invoking Function Expressions Immediately
+
+This feature lets us define a function and call it in mediately, this is done by wrapping the function in parenthesis ` () ` and calling it ` () `.
+
+```
+var result = (
+  function getSum() {
+    return 10 + 20;
+  }
+)()
+```
