@@ -607,3 +607,16 @@ The keyword `const` also doesn’t let the re-declaration but also doesn’t let
 
 Something to be aware of the loops is that every time the loop does an iteration, it creates its own scope instance. It means that the variables are declared in each instance.
 Point out that the `const` can’t be used in the `for` loop because it will try to reassign its value and that’s is no allowed in `const`. 
+
+### uninitialized variables (TDZ)
+
+When a variable is hoisted to the top of the scope only the `var` is initialized as `undefined`, but `let` and `const` not. So you will get an error if you try to use these variables before they are initialized, it is called TDZ(Temporal Dead Zone).
+
+```
+Var studentName = "Pepe";
+{
+	console.log(studentName);
+  // It throws an error
+  let studentName = "Suzy";
+}
+```
