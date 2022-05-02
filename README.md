@@ -584,3 +584,21 @@ function hello() {
 ### Global this
 
 In the ES2020 a standard of the global object was defined and called `globalThis`.
+
+## Chapter 5: The (Not So) Secret Lifecycle of Variables
+A feature that only the function declaration has is the “function hoisting”, when a function is declared the name of it is hoisted to the top of the scope, but also it is initialized so you can call the function even before it is declared.
+
+### Re-declaration
+
+When you declare more than one variable with the same name it won’t fail, and if the next declarations don’t assign new value the variable won’t change.
+```
+var studentName = ”Pepe”;
+var studentName;
+console.log(studentName);
+//Pepe
+```
+This feature of re-declaration only works with the keyword `var`, the `let` keyword doesn’t let you do the re-declaration.
+
+### Const
+
+The keyword `const` also doesn’t let the re-declaration but also doesn’t let you declare it without initializing it.
