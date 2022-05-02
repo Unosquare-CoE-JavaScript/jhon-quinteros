@@ -683,3 +683,23 @@ The catch keyword uses the “block-scoping declaration capability”, it create
 This feature is when you declare a function inside a block, based on the JS standard the function should be only accessible inside the block that declares it but, in the browsers environment there is a difference, here the function name is hoisted to the function scope and initialized as undefined. This is because the definition came after the browser already implemented it, so decided to keep it.
 
 ![Function in Block](img/functionInBlock.PNG)
+
+## Chapter 7: Using Colsures
+
+Closure helps you to encapsulate the variables and preserve the access from inside functions. “Functions can remember these referenced scoped variables via closure”.
+Closure is a mathematical concept, from lambda calculus. To observe the closure you need to call the function in a different scope. Closure is when a function from inner scope uses variables defined in outer scopes, so the variable will still be accessible from the inner scope even if the function is called in other scope.
+Example:
+
+```
+function studentsList() {
+  var students = [“Pepe”, “Lola”, “Maria”];
+  return function listStudents() {
+		console.log(`students list: ${students.join(“, ”)} `);
+  }
+}
+var getStudents = studentsList();
+getStudents();
+//students list: Pepe, Lola, Maria
+```
+
+In the example you can see how the students list is still accessible even when the `studentList`  finished its execution. The students variable is still in memory and is no recollected by the Garbage Collector.
