@@ -580,3 +580,7 @@ function hello() {
 	console.log(`Hello ${studentName}`);
 }
 ```
+
+### Global this
+
+In the ES2020 a standard of the global object was defined and called `globalThis`.
