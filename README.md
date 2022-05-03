@@ -804,3 +804,27 @@ students. getFirstStudent();
 ```
 
 The difference between this example and the previous one, is that this one doesn’t use the IIFE, this way each time you call the function ` defineStudents ` you are creating a new instance of the variable ` studentList `.
+
+### Node CommonJS Modules
+
+CommonJS is file based, this means that each file is a module, if you want to make any feature public you need to use the object provided `module.exports`.
+
+```
+module.exports.getName = getName;
+
+var name = [“Pepe”, “Lola”];
+
+function getName() {
+	return name[0];
+}
+```
+
+If you want to import a module you need to use the `require`.
+
+```
+var students = require(“src/students.js”);
+
+students.getName();
+```
+
+The CommonJS behaves a singleton module, doesn’t matter how many times you invoke the `require` it returns the same reference. The `require` always return the whole public API, if you want only import part of it you can use destructuring.
