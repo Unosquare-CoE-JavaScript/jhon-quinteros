@@ -703,3 +703,32 @@ getStudents();
 ```
 
 In the example you can see how the students list is still accessible even when the `studentList`  finished its execution. The students variable is still in memory and is no recollected by the Garbage Collector.
+
+### Closure instances
+
+Based on the following example you can see how each time the function is called a new closure is created. This happens at runtime.
+
+```
+function sumA(a) {
+	return sumB(b) {
+	  return a  + b;
+  }
+}
+
+let sum1 = sumA(10);
+let sum2 = sumA(20);
+
+conole.log(sum1(10));
+// 20
+conole.log(sum2(20));
+// 40
+```
+Those variables that are accessible aren’t snapshots instead a live links, so you can still update those values. 
+
+### When a closure is not created
+
+A closure won’t be created in the following cases:
+
+-	If the inner function is invoked in the scope it was created.
+-	If the function if it uses variables in the global scope.
+-	If the function doesn’t use any variable from the outer scope.
