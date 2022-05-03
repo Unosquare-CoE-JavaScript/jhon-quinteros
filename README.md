@@ -887,3 +887,16 @@ function getStudent(id, defaultID = () => ID) {
 ```
 
 > Note: there are corner cases with shadowing parameter variables with local variables, avoid do that.
+
+#### Function Name Scope
+
+The name of a function expression is added to the function’s own scope.
+```
+var askQuestion = function ofTheTeacher() {}
+```
+
+> “The function name “ofTheTeacher” is not added to the enclosing scope. The name identifier of a function expression is in its own implied scope, nested between the outer enclosing scope and the main inner function scope”.
+
+### Arrow Functions
+
+Arrow function are always anonymous functions, but it has a cost in readability. The purpose of the arrow function is having lexical `this` behavior. It doesn’t define `this` identifier, instead it looks in the scope chain.
