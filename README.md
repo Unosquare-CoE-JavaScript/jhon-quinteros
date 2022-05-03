@@ -856,3 +856,34 @@ Import * as Student from “src/students.js”;
 
 Student .getStudent();
 ```
+
+## Appendix A: Exploring Further
+
+### Implied Scopes
+
+There are other scopes that weren’t discussed, those are:
+
+#### Parameter scope
+
+By default, we think that the parameters of functions have the same scope as local variables of the function, but in some cases, it is no true. There are two types of parameters, the simple and non-simple. The non-simple includes parameters with default value, rest parameters and destructured parameters.
+Example: 
+```
+function getStudent(studentID = 0) { }
+```
+There are some corner cases where we need to be aware of this.
+Example: 
+
+```
+function getStudent(studentID = maxID, maxID) { }
+```
+
+In the example above the studentID will fail, because the maxID wasn’t declared yet, so you need to reorder the params and first put the maxID and then the studentID.
+We could also use function expression in the default value of the parameter an create a new inner scope.
+
+```
+function getStudent(id, defaultID = () => ID) {
+	defaultID();
+}
+```
+
+> Note: there are corner cases with shadowing parameter variables with local variables, avoid do that.
