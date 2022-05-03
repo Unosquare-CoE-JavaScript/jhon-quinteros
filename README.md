@@ -828,3 +828,31 @@ students.getName();
 ```
 
 The CommonJS behaves a singleton module, doesn’t matter how many times you invoke the `require` it returns the same reference. The `require` always return the whole public API, if you want only import part of it you can use destructuring.
+
+### ES Modules (ESM)
+
+The ESM is file based (a module per file), it is singleton. The main difference with CommonJS is that ESM is by default ` strict mode`.
+To export you use the keywork `export` and the `import` to get it.
+
+```
+var students = [“Pepe”, “Lola”];
+
+export function getStudent() {
+	return students[0];
+}
+
+----
+
+import { getStudent } from “src/students.js”;
+
+getStudent();
+```
+
+There are several ways to do the imports but one of them is the “namespace import”.
+It imports everything(the default and name exports) and stores it all under the single namespace specified.
+
+```
+Import * as Student from “src/students.js”;
+
+Student .getStudent();
+```
