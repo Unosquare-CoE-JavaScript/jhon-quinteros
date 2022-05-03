@@ -756,3 +756,51 @@ A module is also stateful, it keeps the information over time.
 ### Namespace (Stateless Grouping)
 
 A namespace is a group of functions but, without data.
+
+### Data Structures (Stateful Grouping)
+
+It is a group of data and functions but there is not hiding of information.
+
+### Modules (Stateful Access Control)
+
+It groups data and function, also controls the visibility of the information.
+Example: 
+
+```
+var students = (function defineStudents() {
+	var studentList = [“Pepe”, “Lola”, “Leo”];
+	var publicAPI = {
+		getFirstStudent
+  };
+
+  return publicAPI;
+
+  function getFirstStudent() {
+    return studentList[0];
+  }
+})()
+students. getFirstStudent();
+```
+
+In the example above you can see how the ` studentList ` is hidden and only accessible through the ` getFirstStudent ` function that is public.
+
+### Module Factory (Multiple Instances)
+
+```
+function defineStudents() {
+	var studentList = [“Pepe”, “Lola”, “Leo”];
+	var publicAPI = {
+		getFirstStudent
+  };
+
+  return publicAPI;
+
+  function getFirstStudent() {
+    return studentList[0];
+  }
+}
+const students = defineStudents();
+students. getFirstStudent();
+```
+
+The difference between this example and the previous one, is that this one doesn’t use the IIFE, this way each time you call the function ` defineStudents ` you are creating a new instance of the variable ` studentList `.
