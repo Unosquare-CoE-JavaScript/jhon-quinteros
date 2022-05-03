@@ -732,3 +732,14 @@ A closure won’t be created in the following cases:
 -	If the inner function is invoked in the scope it was created.
 -	If the function if it uses variables in the global scope.
 -	If the function doesn’t use any variable from the outer scope.
+
+### Closure definition
+
+>  “Closure is observed when a function uses variables from outer scope even while running in a scope where whose variables wouldn’t be accessible”.
+
+### The closure lifecycle and Garbage Collection
+
+The closure of a variables will be available while there is a reference to that function.
+It’s important to clean the references to the functions with closures, that way the GC can remove the closures.
+
+About if the closure is for the scope or only the variables, conceptually it should be by variables.
