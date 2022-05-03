@@ -743,3 +743,16 @@ The closure of a variables will be available while there is a reference to that 
 It’s important to clean the references to the functions with closures, that way the GC can remove the closures.
 
 About if the closure is for the scope or only the variables, conceptually it should be by variables.
+
+## Chapter 8: The Module Pattern
+
+Encapsulation in a broad meaning is to bundle information and behavior together to server a common purpose. It also helps to control the visibility of the functionality; in JS it can be done through lexical scope.
+
+### What is a Module?
+
+> “Module is a collection of related data, which can be private or public accessible”
+A module is also stateful, it keeps the information over time.
+
+### Namespace (Stateless Grouping)
+
+A namespace is a group of functions but, without data.
