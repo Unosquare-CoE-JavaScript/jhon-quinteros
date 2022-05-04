@@ -43,3 +43,13 @@ const replaceVowels = replace(/[AUIOU]/ig, '!');
 const replacedString =replaceVowels('Hey I have words');
 
 console.log(`replaced string: ${replacedString}`);
+
+/**
+ * Exercise 1
+ */
+
+const split = curry((delimeter, string) => string.split(delimeter));
+
+const wordsSplit = split(" ");
+
+console.log(wordsSplit("Jingle bells Batman smells"));
