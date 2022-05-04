@@ -4,11 +4,12 @@
   "description": "",
   "main": "curry.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "qunit"
   },
   "author": "Jhon Quinteros",
   "license": "ISC",
   "dependencies": {
+    "qunit": "^2.19.1",
     "ramda": "^0.28.0"
   }
 }
