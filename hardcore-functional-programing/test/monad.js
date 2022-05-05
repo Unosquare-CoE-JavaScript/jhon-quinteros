@@ -1,3 +1,4 @@
+const fs = require("fs");
 const {test} = QUnit;
 
 QUnit.module("Monads");
@@ -37,4 +38,36 @@ test("Example 1: return the color found", assert => {
         x => x
       )
   assert.equal(res(), "FF4444");
+});
+
+/**
+ * Example 2: File reader either
+ */
+
+const fromNullable = x =>
+  x != null ? Right(x) : Left(null)
+
+const tryCatch = f => {
+  try {
+    return Right(f());
+  } catch(e) {
+    return Left(e);
+  }
+}
+
+const readFileSync = path =>
+  tryCatch(() => fs.readFileSync(path))
+
+const parseJSON = contents =>
+  tryCatch(() => JSON.parse(contents))
+
+test("Example 2: reading file", assert => {
+  const getPort = () => 
+    readFileSync("test/sample.json")
+      .chain(contents => parseJSON(contents))
+      .map(config => config.PORT)
+      .fold(() => 8080, x => x)
+  
+  assert.equal(getPort(), 3000);
+
 });
