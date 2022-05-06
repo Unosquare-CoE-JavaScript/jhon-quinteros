@@ -25,7 +25,7 @@ function App() {
         className={isChecked ? 'button-color-gray' : buttonColor}
         disabled={isChecked}
         onClick={onClickColorBtn}
-      >Change to {isRed ? 'blue' : 'red'}</button>
+      >Change to {isRed ? 'Mid Night Blue' : 'Medium Violet Red'}</button>
       <input
         type="checkbox"
         id="disable-button-checkbox"
