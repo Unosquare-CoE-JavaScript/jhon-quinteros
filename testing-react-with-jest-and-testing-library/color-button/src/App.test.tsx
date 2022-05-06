@@ -13,7 +13,7 @@ test('button turns blue when clicked', () => {
   const colorButton = screen.getByRole('button', { name: 'Change to Mid Night Blue'});
   fireEvent.click(colorButton);
   expect(colorButton).toHaveClass('button-color-blue');
-  expect(colorButton.textContent).toBe('Change to Medium Violet Red');
+  expect(colorButton).toHaveTextContent('Change to Medium Violet Red');
 })
 
 test('initial conditions', () => {
