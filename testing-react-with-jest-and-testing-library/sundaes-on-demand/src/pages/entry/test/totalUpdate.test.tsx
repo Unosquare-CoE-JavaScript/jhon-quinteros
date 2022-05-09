@@ -59,7 +59,7 @@ test("update topping subtotal when topping is selected", async () => {
 
 describe("grand total", () => {
   test("grand total starts at $0.00", () => {
-    render(<OrderEntry />);
+    render(<OrderEntry setPhase={jest.fn()} />);
     const grandTotal = screen.getByRole("heading", {
       name: /grand total: \$/i,
     });
@@ -68,7 +68,7 @@ describe("grand total", () => {
 
   test("grand total updates properly if scoop is added first", async () => {
     const user = userEvent.setup();
-    render(<OrderEntry />);
+    render(<OrderEntry setPhase={jest.fn()} />);
     const grandTotal = screen.getByRole("heading", {
       name: /grand total: \$/i,
     });
@@ -83,7 +83,7 @@ describe("grand total", () => {
 
   test("grand total updates properly if topping is added first", async () => {
     const user = userEvent.setup();
-    render(<OrderEntry />);
+    render(<OrderEntry setPhase={jest.fn()} />);
     const grandTotal = screen.getByRole("heading", {
       name: /grand total: \$/i,
     });
@@ -97,7 +97,7 @@ describe("grand total", () => {
 
   test("grand total updates properly if item is removed", async () => {
     const user = userEvent.setup();
-    render(<OrderEntry />);
+    render(<OrderEntry setPhase={jest.fn()} />);
     const grandTotal = screen.getByRole("heading", {
       name: /grand total: \$/i,
     });

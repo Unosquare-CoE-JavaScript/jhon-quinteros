@@ -68,6 +68,12 @@ export function OrderDetailsProvider(props: any) {
     setOptionCounts(newOptionsCounts);
   }
 
+  function resetCount() {
+    setOptionCounts({
+      scoops: new Map<string, number>(),
+      toppings: new Map<string, number>(),
+    });
+  }
   const value = useMemo(() => {
     return [
       {
@@ -75,6 +81,7 @@ export function OrderDetailsProvider(props: any) {
         total,
       },
       updateItemCount,
+      resetCount,
     ];
   }, [optionCounts, total]);
 

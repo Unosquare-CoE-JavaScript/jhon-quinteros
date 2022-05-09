@@ -5,13 +5,20 @@ import Popover from "react-bootstrap/Popover";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import "./SummaryForm.css";
 
-export function SummaryForm(props: any) {
+type Props = {
+  setPhase?: Function;
+};
+
+export function SummaryForm({ setPhase = () => {} }: Props) {
   const [isChecked, setChecked] = useState(false);
 
   function onClickCheck(e: ChangeEvent<HTMLInputElement>) {
     setChecked(e.target.checked);
   }
 
+  function onClickConfirm() {
+    setPhase("ConfirmPhase");
+  }
   const popover = (
     <Popover id="popover-basic">
       <Popover.Body>No ice cream will actually be delivered</Popover.Body>
@@ -35,7 +42,12 @@ export function SummaryForm(props: any) {
           }
         />
       </Form.Group>
-      <Button variant="primary" type="submit" disabled={!isChecked}>
+      <Button
+        variant="primary"
+        type="submit"
+        disabled={!isChecked}
+        onClick={onClickConfirm}
+      >
         Confirm order
       </Button>
     </Form>
