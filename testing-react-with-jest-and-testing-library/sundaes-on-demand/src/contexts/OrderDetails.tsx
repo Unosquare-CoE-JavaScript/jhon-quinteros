@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useMemo, useEffect } from "react";
 import { PRICE_PER_ITEM } from "./../constants";
+
 const OrderDetails: any = createContext(null);
 
 function formatCurrency(amount: number) {
@@ -33,8 +34,8 @@ function calculateSubtotal(
 
 export function OrderDetailsProvider(props: any) {
   const [optionCounts, setOptionCounts] = useState({
-    scoops: new Map(),
-    toppings: new Map(),
+    scoops: new Map<string, number>(),
+    toppings: new Map<string, number>(),
   });
 
   const zeroCurrency = formatCurrency(0);
@@ -44,6 +45,7 @@ export function OrderDetailsProvider(props: any) {
     toppings: zeroCurrency,
     grandTotal: zeroCurrency,
   });
+
   useEffect(() => {
     const scoopsSubTotal = calculateSubtotal("scoops", optionCounts);
     const toppingsSubTotal = calculateSubtotal("toppings", optionCounts);
@@ -54,6 +56,7 @@ export function OrderDetailsProvider(props: any) {
       grandTotal: formatCurrency(grandTotal),
     });
   }, [optionCounts]);
+
   function updateItemCount(
     name: string,
     newItemCount: string,

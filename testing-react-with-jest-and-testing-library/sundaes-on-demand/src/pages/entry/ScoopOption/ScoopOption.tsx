@@ -14,6 +14,7 @@ export function ScoopOption({ name, imagePath, updateItemCount }: Props) {
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     updateItemCount(name, e.target.value);
   }
+
   return (
     <Col xs={12} sm={6} md={4} lg={3} className="center-text">
       <img
