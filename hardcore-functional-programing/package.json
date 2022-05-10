@@ -1,0 +1,15 @@
+{
+  "name": "hardcore-functional-programing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "curry.js",
+  "scripts": {
+    "test": "qunit"
+  },
+  "author": "Jhon Quinteros",
+  "license": "ISC",
+  "dependencies": {
+    "qunit": "^2.19.1",
+    "ramda": "^0.28.0"
+  }
+}
