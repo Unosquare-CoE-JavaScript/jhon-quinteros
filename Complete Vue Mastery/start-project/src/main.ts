@@ -8,4 +8,4 @@ const vm: any = app.mount("#app");
 
 setTimeout(() => {
   vm.firstName = "Luis";
-},2000)
+}, 2000);
