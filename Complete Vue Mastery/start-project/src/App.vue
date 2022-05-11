@@ -155,7 +155,7 @@ export default {
 
     <ul>
       <li v-for="(person, index) in people" :key="person.name">
-        <div v-for="(value, key, index) in person">
+        <div v-for="(value, key, index) in person" :key="index">
           {{ `${key}: ${value} - Index: ${index}` }}
         </div>
       </li>
