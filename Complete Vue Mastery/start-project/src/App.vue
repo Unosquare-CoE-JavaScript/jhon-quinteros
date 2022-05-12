@@ -46,7 +46,10 @@ export default {
     },
     updateAge(num) {
       this.age += num;
-    }
+    },
+    updateAgeFN(num) {
+      this.age += num;
+    },
   },
   computed: {
     fullName() {
@@ -203,7 +206,7 @@ export default {
       <input type="text" />
     </div>
     <Greeting />
-    <User :age="age" @age-change="updateAge"/>
+    <User :age="age" @age-change="updateAge" :updateAgeFN="updateAgeFN" />
   </body>
 </template>
 
