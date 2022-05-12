@@ -44,6 +44,9 @@ export default {
       const first: any = this.people.shift();
       this.people.push(first);
     },
+    updateAge(num) {
+      this.age += num;
+    }
   },
   computed: {
     fullName() {
@@ -200,7 +203,7 @@ export default {
       <input type="text" />
     </div>
     <Greeting />
-    <User :age="age"/>
+    <User :age="age" @age-change="updateAge"/>
   </body>
 </template>
 
