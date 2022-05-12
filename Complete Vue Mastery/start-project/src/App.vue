@@ -2,13 +2,16 @@
 import Greeting from "./components/Greeting.vue";
 import User from "./components/User.vue";
 import AppSlot from "./components/Slot.vue";
-
+import AppAbout from "./components/About.vue";
+import AppHome from "./components/Home.vue";
 export default {
   name: "App",
   components: {
     Greeting,
     User,
     AppSlot,
+    AppAbout,
+    AppHome
   },
   data() {
     return {
@@ -26,6 +29,7 @@ export default {
         { name: "Rick", age: 18, message: "I like pie." },
         { name: "Amy", age: 33, message: "Skydiving is fun!" },
       ],
+      componentName: "AppHome"
     };
   },
   methods: {
@@ -210,6 +214,14 @@ export default {
     <Greeting />
     <User :age="age" @age-change="updateAge" :updateAgeFN="updateAgeFN" />
     <AppSlot />
+
+    <select v-model="componentName">
+      <option value="AppHome">Home</option>
+      <option value="AppAbout">About</option>
+    </select>
+    <keep-alive>
+      <component :is="componentName"></component>
+    </keep-alive>
   </body>
 </template>
 
