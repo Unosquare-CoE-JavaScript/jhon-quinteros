@@ -15,7 +15,6 @@
 
 <script>
 export default {
-  name: "AppForm"
-
-}
+  name: "AppForm",
+};
 </script>

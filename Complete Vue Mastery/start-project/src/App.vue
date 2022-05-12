@@ -8,7 +8,7 @@ export default {
   components: {
     Greeting,
     User,
-    AppSlot
+    AppSlot,
   },
   data() {
     return {
@@ -209,7 +209,7 @@ export default {
     </div>
     <Greeting />
     <User :age="age" @age-change="updateAge" :updateAgeFN="updateAgeFN" />
-    <AppSlot/>
+    <AppSlot />
   </body>
 </template>
 
