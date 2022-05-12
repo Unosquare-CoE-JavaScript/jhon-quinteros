@@ -1,5 +1,11 @@
 <script lang="ts">
+import Greeting from "./components/Greeting.vue";
+
 export default {
+  name: "App",
+  components: {
+    Greeting
+  },
   data() {
     return {
       firstName: "pepe",
@@ -191,6 +197,7 @@ export default {
       <p>{{ person.message }}</p>
       <input type="text" />
     </div>
+    <Greeting />
   </body>
 </template>
 
