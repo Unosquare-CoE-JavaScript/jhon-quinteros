@@ -1,12 +1,14 @@
 <script lang="ts">
 import Greeting from "./components/Greeting.vue";
 import User from "./components/User.vue";
+import AppSlot from "./components/Slot.vue";
 
 export default {
   name: "App",
   components: {
     Greeting,
     User,
+    AppSlot
   },
   data() {
     return {
@@ -207,6 +209,7 @@ export default {
     </div>
     <Greeting />
     <User :age="age" @age-change="updateAge" :updateAgeFN="updateAgeFN" />
+    <AppSlot/>
   </body>
 </template>
 
