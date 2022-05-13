@@ -10,6 +10,6 @@ export default {
   },
   deactivated() {
     console.log("Home component deactivated");
-  }
-}
+  },
+};
 </script>

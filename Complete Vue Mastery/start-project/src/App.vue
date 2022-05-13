@@ -11,7 +11,7 @@ export default {
     User,
     AppSlot,
     AppAbout,
-    AppHome
+    AppHome,
   },
   data() {
     return {
@@ -30,7 +30,7 @@ export default {
         { name: "Amy", age: 33, message: "Skydiving is fun!" },
       ],
       componentName: "AppHome",
-      flag: false
+      flag: false,
     };
   },
   methods: {
@@ -109,6 +109,34 @@ export default {
   },
   unmounted() {
     console.log("unmounted function called");
+  },
+  onBeforeEnter(el: Element) {
+    console.log("beforeEnter");
+  },
+  enter(el: Element, done: Function) {
+    const animation = el.animate([{ transform: "scale3d(0,0,0)" }, {}], {
+      duration: 1000,
+    });
+    animation.onfinish = () => {
+      done();
+    };
+  },
+  afterEnter(el: Element) {
+    console.log("afterEnter");
+  },
+  beforeleave(el: Element) {
+    console.log("beforeLeave");
+  },
+  leave(el: Element, done: Function) {
+    const animation = el.animate([{}, { transform: "scale3d(0,0,0)" }, {}], {
+      duration: 1000,
+    });
+    animation.onfinish = () => {
+      done();
+    };
+  },
+  afterLeave(el: Element) {
+    console.log("afterLeave");
   },
 };
 </script>
@@ -230,6 +258,17 @@ export default {
     </transition>
     <transition name="zoom">
       <h2 v-if="flag">Hello</h2>
+    </transition>
+
+    <transition
+      @before-enter="onBeforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @before-leave="beforeleave"
+      @leave="leave"
+      @after-leave="afterLeave"
+    >
+      <h2 v-if="flag">Hey</h2>
     </transition>
   </body>
 </template>
