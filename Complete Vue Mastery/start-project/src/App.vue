@@ -29,7 +29,8 @@ export default {
         { name: "Rick", age: 18, message: "I like pie." },
         { name: "Amy", age: 33, message: "Skydiving is fun!" },
       ],
-      componentName: "AppHome"
+      componentName: "AppHome",
+      flag: false
     };
   },
   methods: {
@@ -222,10 +223,28 @@ export default {
     <keep-alive>
       <component :is="componentName"></component>
     </keep-alive>
+    <button type="button" @click="flag = !flag">Toogle</button>
+    <transition name="fade" mode="out-in">
+      <h2 v-if="flag" key="main">Hello world</h2>
+      <h2 v-else key="secondary">Another hello!</h2>
+    </transition>
   </body>
 </template>
 
 <style scoped>
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: all 2s linear;
+}
+
+.fade-leave-to {
+  transition: all 2s linear;
+  opacity: 0;
+}
+
 .circle {
   width: 150px;
   height: 150px;
