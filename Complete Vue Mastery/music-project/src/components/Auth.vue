@@ -90,10 +90,18 @@
             </button>
           </form>
           <!-- Registration Form -->
+          <div
+            class="text-white text-center font-bold p-5 mb-4"
+            v-if="reg_show_alert"
+            :class="reg_alert_variant"
+          >
+            {{ reg_alert_msg }}
+          </div>
           <VeeForm
             v-show="tab === 'register'"
             :validation-schema="schema"
             @submit="register"
+            :initial-values="userData"
           >
             <!-- Name -->
             <div class="mb-3">
@@ -132,11 +140,19 @@
               <label class="inline-block mb-2">Password</label>
               <VeeField
                 name="password"
-                type="password"
-                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-                placeholder="Password"
-              />
-              <ErrorMessage name="password" class="text-red-600" />
+                :bails="false"
+                v-slot="{ field, errors }"
+              >
+                <input
+                  class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+                  placeholder="Password"
+                  type="password"
+                  v-bind="field"
+                />
+                <div class="text-red-600" v-for="error in errors" :key="error">
+                  {{ error }}
+                </div>
+              </VeeField>
             </div>
             <!-- Confirm Password -->
             <div class="mb-3">
@@ -178,6 +194,7 @@
             <button
               type="submit"
               class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition hover:bg-purple-700"
+              :disabled="reg_in_submission"
             >
               Submit
             </button>
@@ -201,10 +218,17 @@ export default {
         email: "required|min:3|max:100|email",
         age: "required|minValue:18|maxValue:100",
         password: "required|min:3|max:100",
-        confirmPassword: "confirmed:@password",
-        country: "required|excluded:Antartica",
-        tos: "required",
+        confirmPassword: "passwordsMismatch:@password",
+        country: "countryExcluded|excluded:Antartica",
+        tos: "tos",
       },
+      userData: {
+        country: "USA",
+      },
+      reg_in_submission: false,
+      reg_show_alert: false,
+      reg_alert_variant: "bg-blue-500",
+      reg_alert_msg: "Please wait! Your acount is being created.",
     };
   },
   setup() {
@@ -220,6 +244,13 @@ export default {
   },
   methods: {
     register(values) {
+      this.reg_show_alert = true;
+      this.reg_in_submission = true;
+      this.reg_alert_variant = "bg-blue-500";
+      this.reg_alert_msg = "Please wait! Your acount is being created.";
+
+      this.reg_alert_variant = "bg-green-500";
+      this.reg_alert_msg = "Success! Your account has been created.";
       console.log(values);
     },
   },
