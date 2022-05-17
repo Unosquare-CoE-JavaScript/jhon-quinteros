@@ -298,8 +298,7 @@ export default {
       </div>
     </div>
   </div>
-  <AuthModal/>
-  
+  <AuthModal />
 </template>
 
 <style></style>

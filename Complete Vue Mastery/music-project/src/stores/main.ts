@@ -8,6 +8,6 @@ export const useMainStore = defineStore({
   actions: {
     toggleAuthModalShow() {
       this.authModalShow = !this.authModalShow;
-    }
+    },
   },
 });
