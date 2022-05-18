@@ -1,12 +1,21 @@
 <script lang="ts">
 import AppHeader from "./components/Header.vue";
 import AuthModal from "./components/Auth.vue";
-
+import { useMainStore } from "./stores/main";
 export default {
   name: "App",
   components: {
     AppHeader,
     AuthModal,
+  },
+  setup() {
+    const store = useMainStore();
+    return {
+      store,
+    };
+  },
+  created() {
+    this.store.initLogin();
   },
 };
 </script>

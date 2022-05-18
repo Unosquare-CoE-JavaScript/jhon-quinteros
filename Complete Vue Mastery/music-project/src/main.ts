@@ -4,9 +4,16 @@ import VeeValidatePlugin from "./includes/validation";
 import "./index.css";
 import "./assets/main.css";
 import App from "./App.vue";
+import { auth } from "./includes/firebase";
 
-const app = createApp(App);
-app.use(createPinia());
-app.use(VeeValidatePlugin);
+let app: any;
 
-app.mount("#app");
+auth.onAuthStateChanged(() => {
+  if (!app) {
+    app = createApp(App);
+    app.use(createPinia());
+    app.use(VeeValidatePlugin);
+
+    app.mount("#app");
+  }
+});

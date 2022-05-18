@@ -107,8 +107,16 @@
 </template>
 
 <script>
+import { useMainStore } from "./../stores/main";
+
 export default {
   name: "RegisterForm",
+  setup() {
+    const store = useMainStore();
+    return {
+      store,
+    };
+  },
   data() {
     return {
       schema: {
@@ -130,15 +138,26 @@ export default {
     };
   },
   methods: {
-    register(values) {
+    async register(values) {
       this.reg_show_alert = true;
       this.reg_in_submission = true;
       this.reg_alert_variant = "bg-blue-500";
       this.reg_alert_msg = "Please wait! Your acount is being created.";
 
+      try {
+        await this.store.register(values);
+      } catch (error) {
+        this.reg_alert_variant = "bg-red-500";
+        this.reg_alert_msg =
+          "An unexpected error occurred. Please try again later.";
+        this.reg_in_submission = true;
+        console.log(error);
+        return;
+      }
+
       this.reg_alert_variant = "bg-green-500";
       this.reg_alert_msg = "Success! Your account has been created.";
-      console.log(values);
+      window.location.reload();
     },
   },
 };
