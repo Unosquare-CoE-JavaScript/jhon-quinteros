@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
+import router from "./router";
 import VeeValidatePlugin from "./includes/validation";
 import "./index.css";
 import "./assets/main.css";
@@ -12,6 +13,7 @@ auth.onAuthStateChanged(() => {
   if (!app) {
     app = createApp(App);
     app.use(createPinia());
+    app.use(router);
     app.use(VeeValidatePlugin);
 
     app.mount("#app");
