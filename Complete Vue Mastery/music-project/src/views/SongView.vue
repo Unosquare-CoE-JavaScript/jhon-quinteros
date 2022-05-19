@@ -25,7 +25,7 @@
     <div class="bg-white rounded border border-gray-200 relative flex flex-col">
       <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
         <!-- Comment Count -->
-        <span class="card-title">Comments (15)</span>
+        <span class="card-title">Comments ({{ song.commentCount }})</span>
         <i class="fa fa-comments float-right text-green-400 text-2xl"></i>
       </div>
       <div class="p-6">
@@ -58,6 +58,7 @@
         </VeeForm>
         <!-- Sort Comments -->
         <select
+          v-model="sort"
           class="block mt-4 py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
         >
           <option value="1">Latest</option>
@@ -68,76 +69,19 @@
   </section>
   <!-- Comments -->
   <ul class="container mx-auto">
-    <li class="p-6 bg-gray-50 border border-gray-200">
+    <li
+      class="p-6 bg-gray-50 border border-gray-200"
+      v-for="comment in sortedComments"
+      :key="comment.docId"
+    >
       <!-- Comment Author -->
       <div class="mb-5">
-        <div class="font-bold">Elaine Dreyfuss</div>
-        <time>5 mins ago</time>
+        <div class="font-bold">{{ comment.name }}</div>
+        <time>{{ comment.datePosted }}</time>
       </div>
 
       <p>
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-        accusantium der doloremque laudantium.
-      </p>
-    </li>
-    <li class="p-6 bg-gray-50 border border-gray-200">
-      <!-- Comment Author -->
-      <div class="mb-5">
-        <div class="font-bold">Elaine Dreyfuss</div>
-        <time>5 mins ago</time>
-      </div>
-
-      <p>
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-        accusantium der doloremque laudantium.
-      </p>
-    </li>
-    <li class="p-6 bg-gray-50 border border-gray-200">
-      <!-- Comment Author -->
-      <div class="mb-5">
-        <div class="font-bold">Elaine Dreyfuss</div>
-        <time>5 mins ago</time>
-      </div>
-
-      <p>
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-        accusantium der doloremque laudantium.
-      </p>
-    </li>
-    <li class="p-6 bg-gray-50 border border-gray-200">
-      <!-- Comment Author -->
-      <div class="mb-5">
-        <div class="font-bold">Elaine Dreyfuss</div>
-        <time>5 mins ago</time>
-      </div>
-
-      <p>
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-        accusantium der doloremque laudantium.
-      </p>
-    </li>
-    <li class="p-6 bg-gray-50 border border-gray-200">
-      <!-- Comment Author -->
-      <div class="mb-5">
-        <div class="font-bold">Elaine Dreyfuss</div>
-        <time>5 mins ago</time>
-      </div>
-
-      <p>
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-        accusantium der doloremque laudantium.
-      </p>
-    </li>
-    <li class="p-6 bg-gray-50 border border-gray-200">
-      <!-- Comment Author -->
-      <div class="mb-5">
-        <div class="font-bold">Elaine Dreyfuss</div>
-        <time>5 mins ago</time>
-      </div>
-
-      <p>
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-        accusantium der doloremque laudantium.
+        {{ comment.content }}
       </p>
     </li>
   </ul>
@@ -162,6 +106,9 @@ export default {
       return;
     }
     this.song = docSnapshot.data();
+    const { sort } = this.$route.query;
+    this.sort = sort === "1" || sort === "2" ? sort : "1";
+    this.getComments();
   },
   data() {
     return {
@@ -173,7 +120,19 @@ export default {
       commentShowAlert: false,
       commentVariant: "bg-blue-500",
       commentMessage: "Please wait!, your comment is being submitted",
+      comments: [],
+      sort: "1",
     };
+  },
+  computed: {
+    sortedComments() {
+      return this.comments.slice().sort((a, b) => {
+        if (this.sort === "1") {
+          return new Date(b.datePosted) - new Date(a.datePosted);
+        }
+        return new Date(a.datePosted) - new Date(b.datePosted);
+      });
+    },
   },
   methods: {
     async addComment(values, context) {
@@ -191,12 +150,43 @@ export default {
       };
 
       await commentsCollection.add(comment);
+      this.song.commentCount += 1;
+
+      await songsCollection
+        .doc(this.$route.params.id)
+        .update({ commentCount: this.song.commentCount });
+
+      this.getComments();
 
       this.commentInSubmission = false;
       this.commentVariant = "bg-green-500";
       this.commentMessage = "Comment added!";
 
       context.resetForm();
+    },
+    async getComments() {
+      const snapshots = await commentsCollection
+        .where("sid", "==", this.$route.params.id)
+        .get();
+      this.comment = [];
+      snapshots.forEach((document) => {
+        this.comments.push({
+          docId: document.id,
+          ...document.data(),
+        });
+      });
+    },
+  },
+  watch: {
+    sort(newValue) {
+      if (newValue === this.$route.query.sort) {
+        return;
+      }
+      this.$router.push({
+        query: {
+          sort: newValue,
+        },
+      });
     },
   },
 };
