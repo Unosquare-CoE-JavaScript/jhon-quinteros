@@ -2,6 +2,8 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "@/views/HomeView.vue";
 import About from "@/views/AboutView.vue";
 import Manage from "@/views/ManageView.vue";
+import Song from "@/views/SongView.vue";
+
 import { useMainStore } from "./../stores/main";
 
 const routes = [
@@ -27,6 +29,11 @@ const routes = [
   {
     path: "/manage",
     redirect: { name: "manage" },
+  },
+  {
+    path: "/song/:id",
+    name: "song",
+    component: Song,
   },
   {
     path: "/:cathAll(.*)*",
