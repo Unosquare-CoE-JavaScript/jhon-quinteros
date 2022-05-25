@@ -38,6 +38,7 @@
           <ul class="flex flex-wrap mb-4">
             <li class="flex-auto text-center">
               <a
+                id="login"
                 class="block rounded py-3 px-4 transition"
                 href="#"
                 :class="{
@@ -50,6 +51,7 @@
             </li>
             <li class="flex-auto text-center">
               <a
+                id="register"
                 class="block rounded py-3 px-4 transition"
                 href="#"
                 :class="{
@@ -70,7 +72,7 @@
 </template>
 
 <script>
-import { useMainStore } from "./../stores/main";
+import { useMainStore } from "@/stores/main";
 import LoginForm from "./LoginForm.vue";
 import RegisterForm from "./RegisterForm.vue";
 export default {
@@ -97,5 +99,3 @@ export default {
   },
 };
 </script>
-
-<style></style>
