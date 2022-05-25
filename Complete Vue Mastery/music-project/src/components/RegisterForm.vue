@@ -3,6 +3,7 @@
   <div
     class="text-white text-center font-bold p-5 mb-4"
     v-if="reg_show_alert"
+    id="alert-msg"
     :class="reg_alert_variant"
   >
     {{ reg_alert_msg }}
@@ -11,6 +12,7 @@
     :validation-schema="schema"
     @submit="register"
     :initial-values="userData"
+    id="vee-form"
   >
     <!-- Name -->
     <div class="mb-3">
@@ -97,6 +99,7 @@
       <ErrorMessage name="tos" class="text-red-600" />
     </div>
     <button
+      id="submit-btn"
       type="submit"
       class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition hover:bg-purple-700"
       :disabled="reg_in_submission"
@@ -107,7 +110,7 @@
 </template>
 
 <script>
-import { useMainStore } from "./../stores/main";
+import { useMainStore } from "@/stores/main";
 
 export default {
   name: "RegisterForm",

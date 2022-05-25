@@ -9,7 +9,7 @@ describe("SongItem.vue", () => {
       docId: "1",
       modifiedName: "Test song",
       displayName: "Test song",
-      commentCount: 0,
+      commentCount: 1,
     };
     const wrapper = shallowMount(SongItem, {
       props: {
@@ -22,10 +22,11 @@ describe("SongItem.vue", () => {
       },
     });
     const displayName = wrapper.get(".text-gray-500");
+
     expect(displayName.text()).toBe("Test song");
   });
 
-  test("render song.docId in if attribute", () => {
+  test("render song.docId if attribute", () => {
     const song = {
       docId: "1",
       modifiedName: "Test song",
